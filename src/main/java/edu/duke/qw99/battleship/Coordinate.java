@@ -1,0 +1,76 @@
+package edu.duke.qw99.battleship;
+
+/*
+ *Coordinate on a board.
+ */
+public class Coordinate {
+  private final int row, column;
+
+  public int getRow() {
+    return row;
+  }
+
+  public int getColumn() {
+    return column;
+  }
+
+  public Coordinate(int r, int c) {
+    this.row = r;
+    this.column = c;
+  }
+
+  public Coordinate(String descr) {
+    char rowLetter = descr.charAt(0);
+    String colLetter = descr.substring(1);
+    int colNumber = 0;
+    if (rowLetter < 'A' || rowLetter > 'Z') {
+      throw new IllegalArgumentException("Coordinate row must be betwwen A to Z, but is " + rowLetter);
+    } else {
+      if (colLetter.length() > 2 || colLetter.length() < 1) {
+        throw new IllegalArgumentException("Invalid column number");
+      } else {
+        for (int i = 0; i < colLetter.length(); i++) {
+          if (colLetter.charAt(i) < '0' || colLetter.charAt(i) > '9') {
+            throw new IllegalArgumentException("Invalid column number");
+          } else {
+            colNumber = (colLetter.charAt(i) - '0') + colNumber * 10;
+            if(colNumber > 9){
+              throw new IllegalArgumentException("Invalid column number");
+            }
+          }
+        }
+      }
+    }
+    this.row = rowLetter - 'A';
+    this.column = colNumber;
+  }
+
+  /*
+   *This function checks whether two coordinates are equal or not.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o.getClass().equals(getClass())) {
+      Coordinate c = (Coordinate) o;
+      return row == c.row && column == c.column;
+    }
+    return false;
+  }
+  
+  /*
+   *This function converts row and column into a string.
+  */
+  @Override
+  public String toString() {
+    return "(" + row + ", " + column + ")";
+  }
+
+  @Override
+  public int hashCode() {
+    return toString().hashCode();
+  }
+}
+
+
+
+
