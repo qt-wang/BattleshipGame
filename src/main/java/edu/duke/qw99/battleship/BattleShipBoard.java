@@ -38,7 +38,7 @@ public class BattleShipBoard<T> implements Board<T> {
     return true;
   }
 
-  public T whatIsAt(Coordinate where){
+  public T  whatIsAt(Coordinate where){
     for(Ship<T> s:myShips){
       if(s.occupiesCoordinates(where)){
         return s.getDisplayInfoAt(where);
