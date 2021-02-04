@@ -23,6 +23,7 @@ public class Coordinate {
     char rowLetter = descr.charAt(0);
     String colLetter = descr.substring(1);
     int colNumber = 0;
+    rowLetter = Character.toUpperCase(rowLetter);
     if (rowLetter < 'A' || rowLetter > 'Z') {
       throw new IllegalArgumentException("Coordinate row must be betwwen A to Z, but is " + rowLetter);
     } else {
