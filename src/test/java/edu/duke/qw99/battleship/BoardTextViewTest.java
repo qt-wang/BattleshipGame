@@ -48,7 +48,10 @@ public class BoardTextViewTest {
   public void test_display_nonempty_3by4(){
     BattleShipBoard<Character> b1 = new BattleShipBoard<>(4, 3);
     BoardTextView v1 = new BoardTextView(b1);
-    b1.tryAddShip(new BasicShip(new Coordinate(1, 2)));
+    // b1.tryAddShip(new BasicShip(new Coordinate(1, 2)));
+    Coordinate c = new Coordinate(1, 2);
+    RectangleShip<Character> rs = new RectangleShip<Character>(c, 1, 1, new SimpleShipDisplayInfo<Character>('s', '*'));
+    b1.tryAddShip(rs);
     String expected = v1.makeHeader()+
                       "A | | | A\n"+
                       "B | |s| B\n"+

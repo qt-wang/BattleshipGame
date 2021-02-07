@@ -1,0 +1,31 @@
+package edu.duke.qw99.battleship;
+
+public class SimpleShipDisplayInfo<T> implements ShipDisplayInfo<T> {
+  T myData;
+  T  onHit;
+
+  public SimpleShipDisplayInfo<T>(T data, T hit){
+    myData = data;
+    onHit = hit;
+  }
+    
+  @Override
+	public T getInfo(Coordinate where, boolean hit) {
+	  if(hit){
+      retur
+		return null;
+	}
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
