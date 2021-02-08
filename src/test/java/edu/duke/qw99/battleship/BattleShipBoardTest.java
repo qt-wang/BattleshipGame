@@ -35,7 +35,7 @@ public class BattleShipBoardTest {
     Character[][] expected1 = { {null, null}, {null, null} };
     checkWhatIsAtBoard(b1, expected1);
     // BasicShip bs1 = new BasicShip(new Coordinate(0, 0));
-    RectangleShip<Character> bs1 = new RectangleShip<Character>(new Coordinate(0, 0), 1, 1,
+    RectangleShip<Character> bs1 = new RectangleShip<Character>("submarine", new Coordinate(0, 0), 1, 1,
         new SimpleShipDisplayInfo<Character>('s', '*'));
     b1.tryAddShip(bs1);
     Character[][] expected2 = { { 's', null }, { null, null } };

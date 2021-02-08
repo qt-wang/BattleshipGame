@@ -27,7 +27,8 @@ public class RectangleShipTest {
 
   @Test
   public void test_RectangleShip_occupy() {
-    RectangleShip<Character> r1 = new RectangleShip<Character>(new Coordinate(2, 3), 1, 3, 's', '*');
+    RectangleShip<Character> r1 = new RectangleShip<Character>("submarine", new Coordinate(2, 3), 1, 3, 's', '*');
+    assertEquals("submarine", r1.getName());
     assertEquals(true, r1.occupiesCoordinates(new Coordinate(2, 3)));
     assertEquals(true, r1.occupiesCoordinates(new Coordinate(3, 3)));
     assertEquals(true, r1.occupiesCoordinates(new Coordinate(4, 3)));
@@ -42,7 +43,7 @@ public class RectangleShipTest {
 
   @Test
   public void test_RectangleShip_hit(){
-    RectangleShip<Character> r1 = new RectangleShip<Character>(new Coordinate(2, 3), 1, 3, 's', '*');
+    RectangleShip<Character> r1 = new RectangleShip<Character>("submarine", new Coordinate(2, 3), 1, 3, 's', '*');
     assertEquals(false, r1.wasHitAt(new Coordinate(2, 3)));
     assertEquals(false, r1.wasHitAt(new Coordinate(3, 3)));
     assertEquals(false, r1.wasHitAt(new Coordinate(4, 3)));
@@ -56,7 +57,7 @@ public class RectangleShipTest {
 
   @Test
   public void test_RectangleShip_isSunk() {
-     RectangleShip<Character> r1 = new RectangleShip<Character>(new Coordinate(2, 3), 1, 3, 's', '*');
+    RectangleShip<Character> r1 = new RectangleShip<Character>("submarine", new Coordinate(2, 3), 1, 3, 's', '*');
      assertEquals(false, r1.isSunk());
      r1.recordHitAt(new Coordinate(2,3));
      r1.recordHitAt(new Coordinate(3,3));

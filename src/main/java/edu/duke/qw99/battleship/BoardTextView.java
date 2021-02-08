@@ -34,7 +34,7 @@ public class BoardTextView {
       for (int column = 0; column < toDisplay.getWidth(); column++) {
         Coordinate c = new Coordinate(row, column);
         if (toDisplay.whatIsAt(c) != null) {
-          ans.append('s');
+          ans.append(toDisplay.whatIsAt(c));
         } else {
           ans.append(" ");
         }

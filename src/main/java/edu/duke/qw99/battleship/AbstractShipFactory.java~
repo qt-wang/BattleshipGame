@@ -1,0 +1,8 @@
+package edu.duke.qw99.battleship;
+
+/**
+ *This interface represents an Abstract Factory pattern for Ship creation.
+ */
+public interface AbstractShipFactory<T> {
+
+}

@@ -40,26 +40,28 @@ class AppTest {
 
   @Test
   public void test_doOnePlacement() throws IOException{
-    StringReader sr = new StringReader("A0v\nB1H\n");
+    StringReader sr = new StringReader("A0v\nA1v\n");
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     PrintStream ps = new PrintStream(bytes, true);
-    Board<Character> b = new BattleShipBoard<Character>(2, 2);
+    Board<Character> b = new BattleShipBoard<Character>(2, 3);
     App app = new App(b, sr, ps);
     app.doOnePlacement();
     String expected1 = "Where would you like to put your ship?\n"+
                        " 0|1\n"+
-                       "As| A\n"+
-                       "B | B\n"+
+                       "Ad| A\n"+
+                       "Bd| B\n"+
+                       "Cd| C\n"+
                        " 0|1\n" + "\n";
-    assertEquals(bytes.toString(), expected1);
+    assertEquals(expected1, bytes.toString());
     bytes.reset();
     app.doOnePlacement();
     String expected2 = "Where would you like to put your ship?\n"+
                        " 0|1\n"+
-                       "As| A\n"+
-                       "B |sB\n"+
+                       "Ad|dA\n"+
+                       "Bd|dB\n"+
+                       "Cd|dC\n"+
                        " 0|1\n" + "\n";
-    assertEquals(bytes.toString(), expected2);
+    assertEquals(expected2, bytes.toString());
     bytes.reset();
   }
 
