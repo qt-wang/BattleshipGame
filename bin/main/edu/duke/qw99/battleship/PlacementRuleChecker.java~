@@ -1,0 +1,24 @@
+package edu.duke.qw99.battleship;
+
+public abstract class PlacementRuleChecker<T> {
+  protected final PlacementRuleChecker<T> next;
+
+  // more stuff
+  public PlacementRuleChecker(PlacementRuleChecker<T> next) {
+    this.next = next;
+  }
+
+  protected abstract boolean checkMyRule(Ship<T> theShip, Board<T> theBoard);
+}
+
+
+
+
+
+
+
+
+
+
+
+

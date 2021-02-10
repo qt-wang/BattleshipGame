@@ -21,7 +21,7 @@ public class RectangleShip<T> extends BasicShip<T>{
     this.name = name;
   }
 
-  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit){
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit ){
     this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
   }
 
