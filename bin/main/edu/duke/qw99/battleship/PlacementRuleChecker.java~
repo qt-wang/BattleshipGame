@@ -1,7 +1,7 @@
 package edu.duke.qw99.battleship;
 
 public abstract class PlacementRuleChecker<T> {
-  protected final PlacementRuleChecker<T> next;
+  private final PlacementRuleChecker<T> next;
 
   // more stuff
   public PlacementRuleChecker(PlacementRuleChecker<T> next) {

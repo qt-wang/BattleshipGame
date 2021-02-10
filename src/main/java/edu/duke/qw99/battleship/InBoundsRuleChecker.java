@@ -10,11 +10,11 @@ public class InBoundsRuleChecker<T> extends PlacementRuleChecker<T> {
 	protected boolean checkMyRule(Ship<T> theShip, Board<T> theBoard) {
 	  Iterable<Coordinate> coordinateSet = theShip.getCoordinates();
     for(Coordinate c : coordinateSet){
-      if(c.getRow() >= 0 && c.getRow() < theBoard.getHeight() && c.getColumn() >= 0 && c.getColumn() < theBoard.getWidth()){
-        return true;
+      if(!(c.getRow() >= 0 && c.getRow() < theBoard.getHeight() && c.getColumn() >= 0 && c.getColumn() < theBoard.getWidth())){
+        return false;
       }
     }
-		return false;
+		return true;
 	}
 
 }
