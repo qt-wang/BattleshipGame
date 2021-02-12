@@ -3,6 +3,10 @@ package edu.duke.qw99.battleship;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.function.Function;
 
 public class TextPlayer {
   final Board<Character> theBoard;
@@ -11,14 +15,34 @@ public class TextPlayer {
   final PrintStream out ;
   final AbstractShipFactory<Character> shipFactory;
   String name;
+  final ArrayList<String> shipsToPlace;
+  final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
 
-  public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> shipFctory){
+  protected void setupShipCreationMap(){
+    shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
+    shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
+    shipCreationFns.put("Carrier", (p) -> shipFactory.makeCarrier(p));
+    shipCreationFns.put("Battleship", (p) -> shipFactory.makeBattleship(p));
+  }
+
+  protected void setupShipCreationList(){
+    shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
+    shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
+    shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
+    shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
+  }
+
+  public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> shipFctory ){
     this.name = name;
     this.theBoard = theBoard;
     this.view = new BoardTextView(theBoard);
     this.inputReader = inputSource;
     this.out = out;
     this.shipFactory = shipFctory;
+    this.shipsToPlace = new ArrayList<String>();
+    this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
+    setupShipCreationList();
+    setupShipCreationMap();
   }
 
   public Placement readPlacement(String prompt) throws IOException {
@@ -27,19 +51,14 @@ public class TextPlayer {
     return new Placement(s);
   }
 
-  public void doOnePlacement() throws IOException{
-    Placement p = readPlacement("Player " + this.name +  " Where would you like to place a Destroyer?");
+  public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException{
+    Placement p = readPlacement("Player " + this.name +  " Where would you like to place a " + shipName + "?");
     // Ship<Character> s = new BasicShip(p.getWhere());
     // RectangleShip<Character> s = new RectangleShip<Character>("submarine", p.getWhere(), 1, 1, new SimpleShipDisplayInfo<Character>('s', '*'));
-    Ship<Character> s = shipFactory.makeDestroyer(p);
+    Ship<Character> s = createFn.apply(p);
     theBoard.tryAddShip(s);
-    out.println(view.displayMyOwnBoard());
-  }
-
-  public void doPlacementPhase() throws IOException{
-    view.displayMyOwnBoard();
     out.println(view.displayMyOwnBoard() + "\n" +
-                "Player A: you are going to place the following ships (which are all" + "\n" +
+                "Player " + this.name + ": you are going to place the following ships (which are all" + "\n" +
                 "rectangular). For each ship, type the coordinate of the upper left" + "\n" +
                 "side of the ship, followed by either H (for horizontal) or V (for" + "\n" +
                 "vertical).  For example M4H would place a ship horizontally starting" + "\n" +
@@ -49,7 +68,25 @@ public class TextPlayer {
                 "3 Destroyers that are 1x3" + "\n" +
                 "3 Battleships that are 1x4" + "\n" +
                 "2 Carriers that are 1x6" + "\n");
-    doOnePlacement();
+  }
+
+  public void doPlacementPhase() throws IOException{
+    view.displayMyOwnBoard();
+    out.println(view.displayMyOwnBoard() + "\n" +
+                "Player " + this.name + ": you are going to place the following ships (which are all" + "\n" +
+                "rectangular). For each ship, type the coordinate of the upper left" + "\n" +
+                "side of the ship, followed by either H (for horizontal) or V (for" + "\n" +
+                "vertical).  For example M4H would place a ship horizontally starting" + "\n" +
+                "at M4 and going to the right.  You have" + "\n" +
+                "\n" +
+                "2 Submarines ships that are 1x2 " + "\n" +
+                "3 Destroyers that are 1x3" + "\n" +
+                "3 Battleships that are 1x4" + "\n" +
+                "2 Carriers that are 1x6" + "\n");
+    // doOnePlacement("Destroyer", shipCreationFns.get("Destroyer"));
+    for(String s : shipsToPlace){
+      doOnePlacement(s, shipCreationFns.get(s));
+    }
   }
   
 

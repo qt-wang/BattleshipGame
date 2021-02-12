@@ -1,8 +1,7 @@
-Player A Where would you like to place a Destroyer?
  0|1|2|3|4|5|6|7|8|9
-A | | |d| | | | | | A
-B | | |d| | | | | | B
-C | | |d| | | | | | C
+A | | | | | | | | | A
+B | | | | | | | | | B
+C | | | | | | | | | C
 D | | | | | | | | | D
 E | | | | | | | | | E
 F | | | | | | | | | F
@@ -22,13 +21,24 @@ S | | | | | | | | | S
 T | | | | | | | | | T
  0|1|2|3|4|5|6|7|8|9
 
-Player B Where would you like to place a Destroyer?
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Submarine?
  0|1|2|3|4|5|6|7|8|9
-A | | | | | | | | | A
-B | | | | | | | | | B
+A | |s| | | | | | | A
+B | |s| | | | | | | B
 C | | | | | | | | | C
 D | | | | | | | | | D
-E | | | | | |d|d|d| E
+E | | | | | | | | | E
 F | | | | | | | | | F
 G | | | | | | | | | G
 H | | | | | | | | | H
@@ -45,4 +55,714 @@ R | | | | | | | | | R
 S | | | | | | | | | S
 T | | | | | | | | | T
  0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Submarine?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | | | | | | | | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Destroyer?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Destroyer?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | | | | | | | E
+F |d| | | | | | | | F
+G |d| | | | | | | | G
+H |d| | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Destroyer?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | | | | | | | E
+F |d| | | | | | | | F
+G |d| | | | | |d| | G
+H |d| | | | | |d| | H
+I | | | | | | |d| | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Battleship?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | |b|b|b|b| | E
+F |d| | | | | | | | F
+G |d| | | | | |d| | G
+H |d| | | | | |d| | H
+I | | | | | | |d| | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Battleship?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | |b|b|b|b| | E
+F |d| |b|b|b|b| | | F
+G |d| | | | | |d| | G
+H |d| | | | | |d| | H
+I | | | | | | |d| | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Battleship?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | |b|b|b|b| | E
+F |d| |b|b|b|b| | | F
+G |d| | | | | |d| | G
+H |d| | | | | |d| | H
+I | | | | | | |d| | I
+J | | | | | | | | | J
+K | |b| | | | | | | K
+L | |b| | | | | | | L
+M | |b| | | | | | | M
+N | |b| | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Carrier?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | |b|b|b|b| | E
+F |d| |b|b|b|b| | | F
+G |d| | | | | |d| | G
+H |d| | | | | |d| | H
+I | | | | | | |d| | I
+J | | | | |c| | | | J
+K | |b| | |c| | | | K
+L | |b| | |c| | | | L
+M | |b| | |c| | | | M
+N | |b| | |c| | | | N
+O | | | | |c| | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player A Where would you like to place a Carrier?
+ 0|1|2|3|4|5|6|7|8|9
+A | |s| | |s| | | | A
+B | |s| | |s| | | | B
+C | | | | | | | | | C
+D | | |d|d|d| | | | D
+E | | | |b|b|b|b| | E
+F |d| |b|b|b|b| | | F
+G |d| | | | | |d| | G
+H |d| | | | | |d| | H
+I | | | | | | |d| | I
+J | | | | |c| | | | J
+K | |b| | |c| | | | K
+L | |b| | |c| | | | L
+M | |b| | |c| | | | M
+N | |b| | |c| | | | N
+O | | | | |c| | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T |c|c|c|c|c|c| | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player A: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+ 0|1|2|3|4|5|6|7|8|9
+A | | | | | | | | | A
+B | | | | | | | | | B
+C | | | | | | | | | C
+D | | | | | | | | | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Submarine?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | | | | A
+B | | | | | | | | | B
+C | | | | | | | | | C
+D | | | | | | | | | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Submarine?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | | | | | | | | B
+C | | | | | | | | | C
+D | | | | | | | | | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Destroyer?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| | | | B
+C | | | | | | | | | C
+D | | | | | | | | | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Destroyer?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C | | | | | | |d| | C
+D | | | | | | |d| | D
+E | | | | | | | | | E
+F | | | | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Destroyer?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C | | | | | | |d| | C
+D | |d| | | | |d| | D
+E | |d| | | | | | | E
+F | |d| | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Battleship?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C | | | | | | |d| | C
+D | |d| | | | |d| | D
+E | |d| | |b|b|b|b| E
+F | |d| | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Battleship?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C |b|b|b|b| | |d| | C
+D | |d| | | | |d| | D
+E | |d| | |b|b|b|b| E
+F | |d| | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Battleship?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C |b|b|b|b| | |d| | C
+D | |d| | | | |d| | D
+E | |d| | |b|b|b|b| E
+F | |d| | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M | | | | | | | | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Carrier?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C |b|b|b|b| | |d| | C
+D | |d| | | | |d| | D
+E | |d| | |b|b|b|b| E
+F | |d| | | | | | | F
+G | | | | | | | | | G
+H | | | | | | | | | H
+I | | | | | | | | | I
+J | | | | | | | | | J
+K | | | | | | | | | K
+L | | | | | | | | | L
+M |c|c|c|c|c|c| | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
+
+Player B Where would you like to place a Carrier?
+ 0|1|2|3|4|5|6|7|8|9
+A |s|s| | | | |s|s| A
+B | | |d|d|d| |d| | B
+C |b|b|b|b| | |d| | C
+D | |d| | | | |d| | D
+E | |d| | |b|b|b|b| E
+F | |d| | | | | | | F
+G | | | | | | | | |cG
+H | | | | | | | | |cH
+I | | | | | | | | |cI
+J | | | | | | | | |cJ
+K | | | | | | | | |cK
+L | | | | | | | | |cL
+M |c|c|c|c|c|c| | | M
+N | | | | | | | | | N
+O | | | | | | | | | O
+P | | | | | | | | | P
+Q | | | | | | | | | Q
+R | | | | | | | | | R
+S | | | | | | | | | S
+T | | | | | | | | | T
+ 0|1|2|3|4|5|6|7|8|9
+
+Player B: you are going to place the following ships (which are all
+rectangular). For each ship, type the coordinate of the upper left
+side of the ship, followed by either H (for horizontal) or V (for
+vertical).  For example M4H would place a ship horizontally starting
+at M4 and going to the right.  You have
+
+2 Submarines ships that are 1x2 
+3 Destroyers that are 1x3
+3 Battleships that are 1x4
+2 Carriers that are 1x6
 
