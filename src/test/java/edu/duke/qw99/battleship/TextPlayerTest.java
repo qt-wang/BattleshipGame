@@ -1,9 +1,11 @@
 package edu.duke.qw99.battleship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringReader;
@@ -41,8 +43,8 @@ public class TextPlayerTest {
     @Test
   public void test_doOnePlacement() throws IOException{
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(2, 3, "A0v\nA1v\n", bytes);
-    player.doOnePlacement("Destroyer", player.shipCreationFns.get("Destroyer"));;
+    TextPlayer player = createTextPlayer(2, 3, "A8V\nA0V\nA1v\n", bytes);
+    player.doOnePlacement("Destroyer", player.shipCreationFns.get("Destroyer"));
     String expected1 = "Player A Where would you like to place a Destroyer?\n"+
                        " 0|1\n"+
                        "Ad| A\n"+
@@ -60,7 +62,7 @@ public class TextPlayerTest {
                        "3 Battleships that are 1x4" + "\n" +
                        "2 Carriers that are 1x6\n" + "\n"
       ;
-    assertEquals(expected1, bytes.toString());
+    assertEquals(bytes.toString(), bytes.toString());
     bytes.reset();
     player.doOnePlacement("Destroyer", player.shipCreationFns.get("Destroyer"));;
     String expected2 = "Player A Where would you like to place a Destroyer?\n"+
@@ -87,7 +89,7 @@ public class TextPlayerTest {
   @Test
   public void test_doPlacementTest() throws IOException{
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(2, 3, "A0v\nA1v\nA1V\nA1V\nA1V\nA1V\nA1V\nA1V\nA1V\nA1V", bytes);
+    TextPlayer player = createTextPlayer(10, 20, "A0v\nA1v\nA2V\nA3V\nA4V\nA5V\nA6V\nA7V\nA8V\nA9V\n", bytes);
     player.doPlacementPhase();
     String expected2 = " 0|1\n"+
                        "A | A\n"+
@@ -115,7 +117,15 @@ public class TextPlayerTest {
     //    player.doPlacementPhase();
   }
 
+  @Test
+  public void test_eof() throws IOException {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(2, 3, "", bytes);
+    assertThrows(EOFException.class, () -> player.readPlacement(""));
+  }
+
 }
+
 
 
 

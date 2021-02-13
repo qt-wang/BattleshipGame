@@ -40,12 +40,12 @@ public class BattleShipBoard<T> implements Board<T> {
     placementChecker = p;
   }
 
-  public boolean tryAddShip(Ship<T> toAdd){
-    if (placementChecker.checkPlacement(toAdd, this) == true) {
+  public String tryAddShip(Ship<T> toAdd){
+    if (placementChecker.checkPlacement(toAdd, this) == null) {
       myShips.add(toAdd);
-      return true;
+      return null;
     }
-    return false;
+    return placementChecker.checkPlacement(toAdd, this);
   }
 
   public T  whatIsAt(Coordinate where){

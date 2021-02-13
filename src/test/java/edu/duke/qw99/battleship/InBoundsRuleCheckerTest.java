@@ -11,9 +11,13 @@ public class InBoundsRuleCheckerTest {
     Ship<Character> d = v.makeDestroyer(new Placement(new Coordinate(4, 4), 'V'));
     InBoundsRuleChecker<Character> i = new InBoundsRuleChecker<Character>(null);
     Board<Character> b = new BattleShipBoard<Character>(3, 3, i);
-    assertEquals(false, i.checkPlacement(d, b));
+    assertEquals("the ship goes off the bottom of the board", i.checkPlacement(d, b));
     Ship<Character> s = v.makeSubmarine(new Placement(new Coordinate(0,0), 'V'));
-    assertEquals(true, i.checkPlacement(s, b));
+    assertEquals(null, i.checkPlacement(s, b));
+    Ship<Character> s2 = v.makeSubmarine(new Placement(new Coordinate(-1,0), 'V'));
+    assertEquals("the ship goes off the top of the board", i.checkPlacement(s2, b));
+    Ship<Character> s3 = v.makeSubmarine(new Placement(new Coordinate(0,-1), 'V'));
+    assertEquals("the ship goes off the left of the board", i.checkPlacement(s3, b));
   }
 
 }

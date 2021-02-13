@@ -1,6 +1,7 @@
 package edu.duke.qw99.battleship;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -48,15 +49,31 @@ public class TextPlayer {
   public Placement readPlacement(String prompt) throws IOException {
     out.println(prompt);
     String s = inputReader.readLine();
+    if(s == null){
+      throw new EOFException("EOF");
+    }
     return new Placement(s);
   }
-
+  
   public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException{
-    Placement p = readPlacement("Player " + this.name +  " Where would you like to place a " + shipName + "?");
+    String prompt = "Player " + this.name +  " Where would you like to place a " + shipName + "?";
+    int flag = 0;
+    while(flag == 0){
+      try{
+        Placement p = readPlacement(prompt);
     // Ship<Character> s = new BasicShip(p.getWhere());
     // RectangleShip<Character> s = new RectangleShip<Character>("submarine", p.getWhere(), 1, 1, new SimpleShipDisplayInfo<Character>('s', '*'));
-    Ship<Character> s = createFn.apply(p);
-    theBoard.tryAddShip(s);
+        Ship<Character> s = createFn.apply(p);
+        String str = theBoard.tryAddShip(s);
+        if(str != null){
+          throw new IllegalArgumentException(str);
+        }
+        flag = 1;
+      }
+      catch(IllegalArgumentException e){
+        out.println(e.getMessage());
+        }
+    }
     out.println(view.displayMyOwnBoard() + "\n" +
                 "Player " + this.name + ": you are going to place the following ships (which are all" + "\n" +
                 "rectangular). For each ship, type the coordinate of the upper left" + "\n" +
@@ -84,9 +101,9 @@ public class TextPlayer {
                 "3 Battleships that are 1x4" + "\n" +
                 "2 Carriers that are 1x6" + "\n");
     // doOnePlacement("Destroyer", shipCreationFns.get("Destroyer"));
-    for(String s : shipsToPlace){
+      for(String s : shipsToPlace){
       doOnePlacement(s, shipCreationFns.get(s));
-    }
+      }
   }
   
 

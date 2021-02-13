@@ -16,7 +16,7 @@ public class Placement {
     String str_cdnt = s.substring(0, s.length() - 1);
     Coordinate cdnt = new Coordinate(str_cdnt);
     this.where = cdnt;
-    if(Character.toUpperCase(s.charAt(s.length() - 1)) < 'A' || Character.toUpperCase(s.charAt(s.length() - 1)) > 'Z'){
+    if(Character.toUpperCase(s.charAt(s.length() - 1)) != 'H' && Character.toUpperCase(s.charAt(s.length() - 1)) != 'V'){
       throw new IllegalArgumentException("Invalid orientation");
     }
     this.orientation =Character.toUpperCase(s.charAt(s.length() - 1));

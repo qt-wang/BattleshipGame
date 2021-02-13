@@ -47,7 +47,13 @@ public class BattleShipBoardTest {
     V1ShipFactory v = new V1ShipFactory();
     Ship<Character> c = v.makeCarrier(new Placement(new Coordinate(2, 2), 'V'));
     Board<Character> b = new BattleShipBoard<Character>(4, 4);
-    assertEquals(false, b.tryAddShip(c));
+    assertEquals("the ship goes off the bottom of the board", b.tryAddShip(c));
+    Ship<Character> s = v.makeSubmarine(new Placement(new Coordinate(3, 3), 'H'));
+    assertEquals("the ship goes off the right of the board", b.tryAddShip(s));
+    Ship<Character> s2 = v.makeSubmarine(new Placement(new Coordinate(1, 1), 'H'));
+    assertEquals(null, b.tryAddShip(s2));
+    Ship<Character> s3 = v.makeSubmarine(new Placement(new Coordinate(1, 2), 'H'));
+    assertEquals("the ship overlaps another ship", b.tryAddShip(s3));
   }
     
 }
