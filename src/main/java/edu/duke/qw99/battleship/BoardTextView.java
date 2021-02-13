@@ -1,5 +1,7 @@
 package edu.duke.qw99.battleship;
 
+import java.util.function.Function;
+
 /**
  * This class handles textual display of a Board(i.e., converting it to a string
  * to to the user). It supports two ways to display the Board: one for the
@@ -24,7 +26,7 @@ public class BoardTextView {
     }
   }
 
-  public String displayMyOwnBoard() {
+  protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn){
     StringBuilder ans = new StringBuilder();
     String header = makeHeader();
     ans.append(header);
@@ -33,8 +35,8 @@ public class BoardTextView {
       ans.append(s);
       for (int column = 0; column < toDisplay.getWidth(); column++) {
         Coordinate c = new Coordinate(row, column);
-        if (toDisplay.whatIsAt(c) != null) {
-          ans.append(toDisplay.whatIsAt(c));
+        if (getSquareFn.apply(c) != null) {
+          ans.append(getSquareFn.apply(c));
         } else {
           ans.append(" ");
         }
@@ -48,6 +50,14 @@ public class BoardTextView {
     }
     ans.append(header);
     return ans.toString();
+  }
+
+  public String displayMyOwnBoard() {
+    return displayAnyBoard((c)->toDisplay.whatIsAtForSelf(c));
+  }
+
+  public String displayEnemyBoard(){
+     return displayAnyBoard((c)->toDisplay.whatIsAtForEnemy(c));
   }
 
   /**

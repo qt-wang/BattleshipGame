@@ -7,11 +7,12 @@ import org.junit.jupiter.api.Test;
 public class V1ShipFactoryTest {
 
   private void checkShip(Ship<Character> testShip, String expectedName, char expectedLetter, Coordinate[] expectedLocs){
-    BattleShipBoard<Character> b = new BattleShipBoard<Character>(10, 10);
+    BattleShipBoard<Character> b = new BattleShipBoard<Character>(10, 10, 'X');
     b.tryAddShip(testShip);
     assertEquals(expectedName, testShip.getName());
     for(Coordinate c : expectedLocs){
-      assertEquals(expectedLetter, testShip.getDisplayInfoAt(c));
+      assertEquals(expectedLetter, testShip.getDisplayInfoAt(c, true));
+      assertEquals(null, testShip.getDisplayInfoAt(c, false));
     }
   }
 

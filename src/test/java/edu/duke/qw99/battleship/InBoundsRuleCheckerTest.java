@@ -10,7 +10,7 @@ public class InBoundsRuleCheckerTest {
     V1ShipFactory v = new V1ShipFactory();
     Ship<Character> d = v.makeDestroyer(new Placement(new Coordinate(4, 4), 'V'));
     InBoundsRuleChecker<Character> i = new InBoundsRuleChecker<Character>(null);
-    Board<Character> b = new BattleShipBoard<Character>(3, 3, i);
+    Board<Character> b = new BattleShipBoard<Character>(3, 3, i, 'X');
     assertEquals("the ship goes off the bottom of the board", i.checkPlacement(d, b));
     Ship<Character> s = v.makeSubmarine(new Placement(new Coordinate(0,0), 'V'));
     assertEquals(null, i.checkPlacement(s, b));
