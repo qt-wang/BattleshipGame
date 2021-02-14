@@ -46,11 +46,11 @@ public class TextPlayerTest {
     TextPlayer player = createTextPlayer(2, 3, "A8V\nA0V\nA1v\n", bytes);
     player.doOnePlacement("Destroyer", player.shipCreationFns.get("Destroyer"));
     String expected1 = "Player A Where would you like to place a Destroyer?\n"+
-                       " 0|1\n"+
-                       "Ad| A\n"+
-                       "Bd| B\n"+
-                       "Cd| C\n"+
-                       " 0|1\n" + "\n" +
+                       "  0|1\n"+
+                       "A d|  A\n"+
+                       "B d|  B\n"+
+                       "C d|  C\n"+
+                       "  0|1\n" + "\n" +
                        "Player A: you are going to place the following ships (which are all" + "\n" +
                        "rectangular). For each ship, type the coordinate of the upper left" + "\n" +
                        "side of the ship, followed by either H (for horizontal) or V (for" + "\n" +
@@ -66,11 +66,11 @@ public class TextPlayerTest {
     bytes.reset();
     player.doOnePlacement("Destroyer", player.shipCreationFns.get("Destroyer"));;
     String expected2 = "Player A Where would you like to place a Destroyer?\n"+
-                       " 0|1\n"+
-                       "Ad|dA\n"+
-                       "Bd|dB\n"+
-                       "Cd|dC\n"+
-                       " 0|1\n" + "\n" +
+                       "  0|1\n"+
+                       "A d|d A\n"+
+                       "B d|d B\n"+
+                       "C d|d C\n"+
+                       "  0|1\n" + "\n" +
                        "Player A: you are going to place the following ships (which are all" + "\n" +
                        "rectangular). For each ship, type the coordinate of the upper left" + "\n" +
                        "side of the ship, followed by either H (for horizontal) or V (for" + "\n" +
@@ -91,11 +91,11 @@ public class TextPlayerTest {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayer(10, 20, "A0v\nA1v\nA2V\nA3V\nA4V\nA5V\nA6V\nA7V\nA8V\nA9V\n", bytes);
     player.doPlacementPhase();
-    String expected2 = " 0|1\n"+
-                       "A | A\n"+
-                       "B | B\n"+
-                       "C | C\n"+
-                       " 0|1\n"+ "\n" +
+    String expected2 = "  0|1\n"+
+                       "A  |  A\n"+
+                       "B  |  B\n"+
+                       "C  |  C\n"+
+                       "  0|1\n"+ "\n" +
                        "Player A: you are going to place the following ships (which are all" + "\n" +
                        "rectangular). For each ship, type the coordinate of the upper left" + "\n" +
                        "side of the ship, followed by either H (for horizontal) or V (for" + "\n" +
@@ -108,11 +108,11 @@ public class TextPlayerTest {
                        "2 Carriers that are 1x6" + "\n" +
                        "\n" + 
                        "Player A Where would you like to place a Destroyer?\n" + 
-                       " 0|1\n"+
-                       "Ad| A\n"+
-                       "Bd| B\n"+
-                       "Cd| C\n"+
-                       " 0|1\n" + "\n";
+                       "  0|1\n"+
+                       "A d|  A\n"+
+                       "B d|  B\n"+
+                       "C d|  C\n"+
+                       "  0|1\n" + "\n";
     assertEquals(bytes.toString(), bytes.toString());
     //    player.doPlacementPhase();
   }

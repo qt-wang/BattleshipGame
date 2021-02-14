@@ -60,10 +60,10 @@ public abstract class BasicShip<T> implements Ship<T>{
 	@Override
 	public T  getDisplayInfoAt(Coordinate where, boolean myShip) {
     if(myShip == true){
-      return myDisplayInfo.getInfo(where, false);
+      return myDisplayInfo.getInfo(where, wasHitAt(where));
     }
     else{
-      return enemyDisplayInfo.getInfo(where, false);
+      return enemyDisplayInfo.getInfo(where, wasHitAt(where));
     }
 	}
 

@@ -33,6 +33,7 @@ public class BoardTextView {
     for (int row = 0; row < toDisplay.getHeight(); row++) {
       String s = Character.toString('A' + row);
       ans.append(s);
+      ans.append(" ");
       for (int column = 0; column < toDisplay.getWidth(); column++) {
         Coordinate c = new Coordinate(row, column);
         if (getSquareFn.apply(c) != null) {
@@ -43,6 +44,7 @@ public class BoardTextView {
         if (column != toDisplay.getWidth() - 1) {
           ans.append("|");
         } else {
+          ans.append(" ");
           ans.append(s);
           ans.append("\n");
         }
@@ -67,7 +69,7 @@ public class BoardTextView {
    */
   String makeHeader() {
     StringBuilder ans = new StringBuilder(" ");
-    String sep = "";
+    String sep = " ";
     for (int i = 0; i < toDisplay.getWidth(); i++) {
       ans.append(sep);
       ans.append(i);
@@ -76,4 +78,40 @@ public class BoardTextView {
     ans.append("\n");
     return ans.toString();
   }
+
+  public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
+    StringBuilder ans = new StringBuilder();
+    int w = this.toDisplay.getWidth();
+    int h = this.toDisplay.getHeight();
+    ans.append("     " + myHeader);
+    for (int i = 0; i < 2 * w + 32 - 5 - myHeader.length(); i++) {
+      ans.append(" ");
+    }
+    ans.append(enemyHeader);
+    ans.append("\n");
+    String[] linesMyBoard = this.displayMyOwnBoard().split("\n");
+    String[] linesEnemyBoard = enemyView.displayEnemyBoard().split("\n");
+    for (int j = 0; j < h+2; j++) {
+      ans.append(linesMyBoard[j]);
+      if(j == 0 || j == h+1){
+        ans.append("  ");
+      }
+      for (int m = 0; m < 26; m++) {
+          ans.append(" ");
+        }
+      ans.append(linesEnemyBoard[j]);
+      ans.append("\n");
+    }
+    return ans.toString();
+  }
 }
+
+
+
+
+
+
+
+
+
+
