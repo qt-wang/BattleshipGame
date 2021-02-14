@@ -54,7 +54,7 @@ public class BattleShipBoard<T> implements Board<T> {
   }
 
   public T whatIsAtForSelf(Coordinate where)  {
-    return whatIsAt(where, true);
+        return whatIsAt(where, true);
   }
   
   public T whatIsAtForEnemy(Coordinate where) {
@@ -86,6 +86,15 @@ public class BattleShipBoard<T> implements Board<T> {
       }
     }
     return null;
+  }
+
+  public boolean isLose(){
+    for(Ship<T> s : myShips){
+      if(s.isSunk() == false){
+        return false;
+      }
+    }
+    return true;
   }
 
 

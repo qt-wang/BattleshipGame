@@ -20,7 +20,6 @@ public interface AbstractShipFactory<T> {
    * @return the Ship created for the battleship.
    */
   public Ship<T> makeBattleship(Placement where);
-
   /**
    * Make a carrier.
    * 

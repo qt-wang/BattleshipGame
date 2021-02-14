@@ -13,6 +13,8 @@ public interface Board<T> {
 
   public T whatIsAtForEnemy(Coordinate where);
 
+  public boolean isLose();
+
 }
 
 

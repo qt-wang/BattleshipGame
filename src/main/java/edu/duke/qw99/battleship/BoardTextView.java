@@ -80,6 +80,8 @@ public class BoardTextView {
   }
 
   public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
+    String[] linesMyBoard = this.displayMyOwnBoard().split("\n");
+    String[] linesEnemyBoard = enemyView.displayEnemyBoard().split("\n");
     StringBuilder ans = new StringBuilder();
     int w = this.toDisplay.getWidth();
     int h = this.toDisplay.getHeight();
@@ -89,8 +91,6 @@ public class BoardTextView {
     }
     ans.append(enemyHeader);
     ans.append("\n");
-    String[] linesMyBoard = this.displayMyOwnBoard().split("\n");
-    String[] linesEnemyBoard = enemyView.displayEnemyBoard().split("\n");
     for (int j = 0; j < h+2; j++) {
       ans.append(linesMyBoard[j]);
       if(j == 0 || j == h+1){

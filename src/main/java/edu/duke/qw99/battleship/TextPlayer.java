@@ -105,8 +105,23 @@ public class TextPlayer {
       doOnePlacement(s, shipCreationFns.get(s));
       }
   }
-  
 
+  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enermyBoardView, String enemyName) throws IOException{
+    out.println("Player " + this.name + "'s turn:\n");
+    String myHeader = "Your ocean";
+    String enemyHeader = "Player " + enemyName + "'s ocean";
+    out.println(this.view.displayMyBoardWithEnemyNextToIt(enermyBoardView, myHeader, enemyHeader));
+    out.println("Player " + this.name + ": please write a coordinate to fire at\n");
+    String s = inputReader.readLine();
+    Coordinate c = new Coordinate(s);
+    Ship<Character> ship = enemyBoard.fireAt(c);
+    if(ship == null){
+      out.println("You missied!\n");
+    }
+    else{
+      out.println("You hit a " + ship.getName() + "!\n");
+    }
+  }
 }
   
 
