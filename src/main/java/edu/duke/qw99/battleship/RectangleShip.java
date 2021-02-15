@@ -5,6 +5,12 @@ import java.util.HashSet;
 public class RectangleShip<T> extends BasicShip<T> {
   private String name;
 
+  /**
+   *Make a coordinate set that contains all coordinates a ship occupies.
+   *@param upperLeft is the specified upperleft coordinate of a ship.
+   *@param width is the specified width of a ship.  
+   *@param width is the specified height of a ship. 
+   **/
   static HashSet<Coordinate> makeCoords(Coordinate upperLeft, int width, int height) {
     HashSet<Coordinate> ans = new HashSet<Coordinate>();
     for (int i = 0; i < height; i++) {
@@ -31,8 +37,21 @@ public class RectangleShip<T> extends BasicShip<T> {
     this("testship", upperLeft, 1, 1, data, onHit);
   }
 
+  /**
+   *Get the name of the RectangleShip.
+   *@return the name of the RectangleShip name
+   */
   public String getName() {
     return name;
   }
 
 }
+
+
+
+
+
+
+
+
+

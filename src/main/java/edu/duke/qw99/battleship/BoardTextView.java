@@ -25,7 +25,7 @@ public class BoardTextView {
           "Board must be no larger than 10x26, but is " + toDisplay.getWidth() + "x" + toDisplay.getHeight());
     }
   }
-
+  
   protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn){
     StringBuilder ans = new StringBuilder();
     String header = makeHeader();
@@ -54,14 +54,22 @@ public class BoardTextView {
     return ans.toString();
   }
 
+  /**
+   *Display my own board.
+   *@return a string that shows my board.  
+   */  
   public String displayMyOwnBoard() {
     return displayAnyBoard((c)->toDisplay.whatIsAtForSelf(c));
   }
 
+   /**
+   *Display my enemy's board.
+   *@return a string that shows my enemy's board.  
+   */  
   public String displayEnemyBoard(){
      return displayAnyBoard((c)->toDisplay.whatIsAtForEnemy(c));
   }
-
+  
   /**
    * This makes the header line, e.g. 0|1|2|3|4\n
    * 
@@ -79,6 +87,13 @@ public class BoardTextView {
     return ans.toString();
   }
 
+  /**
+   *Display my own board on the right, and display my enemy's board on the left.
+   *@param enemyView is the view of the enemy's board.
+   *@param myHeader is a string shown above my board.  
+   *@param enemyHeader is s string shown above my enemy's board. 
+   *@return a string that shows my board with my enemy's board.  
+   */
   public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
     String[] linesMyBoard = this.displayMyOwnBoard().split("\n");
     String[] linesEnemyBoard = enemyView.displayEnemyBoard().split("\n");

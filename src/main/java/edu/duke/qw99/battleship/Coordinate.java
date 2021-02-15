@@ -6,19 +6,36 @@ package edu.duke.qw99.battleship;
 public class Coordinate {
   private final int row, column;
 
+  /**
+   *Get the row of a coordinate.
+   *@return the row of a coordinate  
+   */  
   public int getRow() {
     return row;
   }
 
+   /**
+   *Get the column of a coordinate.
+   *@return the column of a coordinate  
+   */  
   public int getColumn() {
     return column;
   }
 
+  /**
+   *Construct a coordinate with a specified row and a specified column.
+   *@param r is the specifeid row.
+   *@param c is the specified column.  
+   */  
   public Coordinate(int r, int c) {
     this.row = r;
     this.column = c;
   }
 
+  /**
+   *Construct a coordinate with a string.
+   *@param descr is the specified string. The correct format is like "A3".  
+   */  
   public Coordinate(String descr) {
     char rowLetter = descr.charAt(0);
     String colLetter = descr.substring(1);
@@ -45,7 +62,7 @@ public class Coordinate {
     this.row = rowLetter - 'A';
     this.column = colNumber;
   }
-
+  
   /*
    *This function checks whether two coordinates are equal or not.
    */

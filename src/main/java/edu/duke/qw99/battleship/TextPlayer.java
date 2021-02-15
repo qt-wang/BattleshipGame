@@ -33,6 +33,9 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
   }
 
+  /**
+   *Construct a TextPlayer.
+   */
   public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> shipFctory ){
     this.name = name;
     this.theBoard = theBoard;
@@ -46,6 +49,11 @@ public class TextPlayer {
     setupShipCreationMap();
   }
 
+  /**
+   *This function prints out the prompt message and reads from input
+   *@param prompt is a message.
+   *@return a placement that was read by inputReader from the input.  
+   */  
   public Placement readPlacement(String prompt) throws IOException {
     out.println(prompt);
     String s = inputReader.readLine();
@@ -54,15 +62,18 @@ public class TextPlayer {
     }
     return new Placement(s);
   }
-  
+
+  /*
+   *This function place a ship according to player's input. It shows prompt messages and reads from the input, and adds a ship to the board.
+   *@param shipName is the name of the ship you want to place.
+   *@param createFn is lambda expression. It can create a ship according the input.
+   */  
   public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) throws IOException{
     String prompt = "Player " + this.name +  " Where would you like to place a " + shipName + "?";
     int flag = 0;
     while(flag == 0){
       try{
         Placement p = readPlacement(prompt);
-    // Ship<Character> s = new BasicShip(p.getWhere());
-    // RectangleShip<Character> s = new RectangleShip<Character>("submarine", p.getWhere(), 1, 1, new SimpleShipDisplayInfo<Character>('s', '*'));
         Ship<Character> s = createFn.apply(p);
         String str = theBoard.tryAddShip(s);
         if(str != null){
@@ -86,7 +97,14 @@ public class TextPlayer {
                 "3 Battleships that are 1x4" + "\n" +
                 "2 Carriers that are 1x6" + "\n");
   }
-
+  
+  /**
+   *This function does following things:
+   *    (a) display the starting (empty) board
+   *    (b) print the instructions message (from the README,
+   *        but also shown again near the top of this file)
+   *    (c) call doOnePlacement to place one ship
+   */
   public void doPlacementPhase() throws IOException{
     view.displayMyOwnBoard();
     out.println(view.displayMyOwnBoard() + "\n" +
@@ -105,7 +123,13 @@ public class TextPlayer {
       doOnePlacement(s, shipCreationFns.get(s));
       }
   }
-
+  
+  /**
+   *This function allows player to play only one turn. It shows prompt messges and reads from the input and attack enemy's board.
+   *@param enemyBoard is my enemy's board.
+   *@param enemyBoardView is my enemy's view.
+   *@param enemyName is my enemy's name.  
+   */
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enermyBoardView, String enemyName) throws IOException{
     out.println("Player " + this.name + "'s turn:\n");
     String myHeader = "Your ocean";
