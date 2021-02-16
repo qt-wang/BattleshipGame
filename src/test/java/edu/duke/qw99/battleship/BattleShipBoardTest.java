@@ -45,7 +45,7 @@ public class BattleShipBoardTest {
   @Test
   public void test_invalidAdd(){
     V1ShipFactory v = new V1ShipFactory();
-    Ship<Character> c = v.makeCarrier(new Placement(new Coordinate(2, 2), 'V'));
+    Ship<Character> c = v.makeCarrier(new Placement(new Coordinate(2, 2), 'D'));
     Board<Character> b = new BattleShipBoard<Character>(4, 4, 'X');
     assertEquals("the ship goes off the bottom of the board", b.tryAddShip(c));
     Ship<Character> s = v.makeSubmarine(new Placement(new Coordinate(3, 3), 'H'));

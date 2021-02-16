@@ -60,7 +60,6 @@ public class PlacementTest {
 
   @Test
   public void test_string_constructor_error_cases(){
-    assertThrows(IllegalArgumentException.class, () -> new Placement("a3n"));
     assertThrows(IllegalArgumentException.class, () -> new Placement("A"));
     assertThrows(IllegalArgumentException.class, () -> new Placement("@0"));
     assertThrows(IllegalArgumentException.class, () -> new Placement("A12"));

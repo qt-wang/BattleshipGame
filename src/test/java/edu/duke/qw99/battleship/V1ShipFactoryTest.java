@@ -36,19 +36,19 @@ public class V1ShipFactoryTest {
 
   @Test
    public void test_createCarrier() {
-    Placement p = new Placement(new Coordinate(1, 2), 'H');
+    Placement p = new Placement(new Coordinate(1, 2), 'U');
     V1ShipFactory v = new V1ShipFactory();
     Ship<Character> s = v.makeCarrier(p);
-    Coordinate[] c = {new Coordinate(1, 2), new Coordinate(1, 3), new Coordinate(1, 4), new Coordinate(1, 5)};
+    Coordinate[] c = {new Coordinate(1, 2), new Coordinate(2, 2), new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(4, 3), new Coordinate(5, 3)};
     checkShip(s, "Carrier", 'c', c);
   }
 
     @Test
    public void test_createBattleship() {
-    Placement p = new Placement(new Coordinate(1, 2), 'V');
+    Placement p = new Placement(new Coordinate(1, 2), 'U');
     V1ShipFactory v = new V1ShipFactory();
     Ship<Character> s = v.makeBattleship(p);
-    Coordinate[] c = {new Coordinate(1, 2), new Coordinate(2, 2), new Coordinate(3, 2)};
+    Coordinate[] c = {new Coordinate(1, 3), new Coordinate(2, 2), new Coordinate(2, 3), new Coordinate(2, 4)};
     checkShip(s, "Battleship", 'b', c);
   }
 

@@ -23,7 +23,7 @@ public class NoCollisionRuleCheckerTest {
     V1ShipFactory v = new V1ShipFactory();
     Ship<Character> d = v.makeDestroyer(new Placement(new Coordinate(2, 2), 'V'));
     Ship<Character> s = v.makeSubmarine(new Placement(new Coordinate(3, 1), 'H'));
-    Ship<Character> c = v.makeCarrier(new Placement(new Coordinate(4, 4),'V'));
+    Ship<Character> c = v.makeDestroyer(new Placement(new Coordinate(4, 4),'V'));
     InBoundsRuleChecker<Character> i = new InBoundsRuleChecker<Character>(null);
      NoCollisionRuleChecker<Character> n = new NoCollisionRuleChecker<Character>(i);
      Board<Character> b = new BattleShipBoard<Character>(5, 5, n, 'X');

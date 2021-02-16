@@ -41,6 +41,26 @@ public class App {
     System.exit(0);
   }
 
+  public void doAllPhase() throws IOException{
+    while(true){
+       if(player1.theBoard.isLose() == false){
+        player1.doAll(player2.theBoard, player2.view, player2.name);
+      }
+      else{
+        player2.out.println(player2.name + "wins!");
+        break;
+      }
+      if(player2.theBoard.isLose() == false){
+        player2.doAll(player1.theBoard, player1.view, player1.name);
+      }
+      else{
+        player1.out.println(player1.name + " wins!");
+        break;
+      }
+    }
+    System.exit(0);
+  }
+
   public static void main(String[] args) throws IOException{
     Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
@@ -50,7 +70,7 @@ public class App {
     TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
     App app = new App(player1, player2);
     app.doPlacementPhase();
-    app.doAttackingPhase();
+    app.doAllPhase();
   }
 
   

@@ -18,7 +18,11 @@ public class TextPlayer {
   String name;
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
+  private int scanNum;
 
+  public int getScanNum(){
+    return scanNum;
+  }
   protected void setupShipCreationMap(){
     shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
     shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
@@ -47,6 +51,7 @@ public class TextPlayer {
     this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
     setupShipCreationList();
     setupShipCreationMap();
+    this.scanNum = 3;
   }
 
   /**
@@ -130,11 +135,11 @@ public class TextPlayer {
    *@param enemyBoardView is my enemy's view.
    *@param enemyName is my enemy's name.  
    */
-  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enermyBoardView, String enemyName) throws IOException{
+  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyBoardView, String enemyName) throws IOException{
     out.println("Player " + this.name + "'s turn:\n");
     String myHeader = "Your ocean";
     String enemyHeader = "Player " + enemyName + "'s ocean";
-    out.println(this.view.displayMyBoardWithEnemyNextToIt(enermyBoardView, myHeader, enemyHeader));
+    out.println(this.view.displayMyBoardWithEnemyNextToIt(enemyBoardView, myHeader, enemyHeader));
     out.println("Player " + this.name + ": please write a coordinate to fire at\n");
     String s = inputReader.readLine();
     Coordinate c = new Coordinate(s);
@@ -145,6 +150,108 @@ public class TextPlayer {
     else{
       out.println("You hit a " + ship.getName() + "!\n");
     }
+  }
+
+  public void scan(Board<Character> enemyBoard) throws IOException{
+      int submarineNum = 0;
+      int destroyerNum = 0;
+      int battleshipNum = 0;
+      int carrierNum = 0;
+      out.println("Player " + this.name + ": please input a center coordinate of a sonar scan");
+      String s = inputReader.readLine();
+      Coordinate c = new Coordinate(s);
+      int row = c.getRow();
+      int col = c.getColumn();
+      for (int i = -3; i <= 0; i++) {
+        for (int j = -3 - i; j <= 3 + i; j++) {
+          if ((row + i) < 0 || (row + i) >= enemyBoard.getHeight() || (col + j) < 0
+              || (col + j) >= enemyBoard.getWidth()) {
+            continue;
+          } else {
+            if(enemyBoard.whatIsAtForSelf(new Coordinate(row + i, col + j)) == null){
+              continue;
+            }
+            char shipName = enemyBoard.whatIsAtForSelf(new Coordinate(row + i, col + j));
+            if (shipName == 's') {
+              submarineNum++;
+            }
+            if (shipName == 'd') {
+              destroyerNum++;
+            }
+            if (shipName == 'b') {
+              battleshipNum++;
+            }
+            if (shipName == 'c') {
+              carrierNum++;
+            }
+          }
+        }
+        }
+      for (int m = 1; m <= 3; m++) {
+        for (int n = m - 3; n <= 3 - m; n++) {
+          if ((row + m) < 0 || (row + m) >= enemyBoard.getHeight() || (col + n) < 0
+              || (col + n) >= enemyBoard.getWidth()) {
+            break;
+          } else {
+            if(enemyBoard.whatIsAtForSelf(new Coordinate(row + m, col + n)) == null){
+              continue;
+            }
+            char shipName = enemyBoard.whatIsAtForSelf(new Coordinate(row + m, col + n));
+            if (shipName == 's') {
+              submarineNum++;
+            }
+            if (shipName == 'd') {
+              destroyerNum++;
+            }
+            if (shipName == 'b') {
+              battleshipNum++;
+            }
+            if (shipName == 'c') {
+              carrierNum++;
+            }
+          }
+        }
+        }   
+      scanNum--;
+      out.println("Submarines occupy " + submarineNum + " squares\n" +
+                  "Destroyers occupy " + destroyerNum + " squares\n" +
+                  "Battleships occupy " + battleshipNum + " squares\n" +
+                  "Carriers occupy " + carrierNum + " squares\n");
+  }
+
+  public void doAll(Board<Character> enemyBoard, BoardTextView enemyBoardView, String enemyName) throws IOException {
+    while (true) {
+      out.println("Player " + this.name + "'s turn:\n");
+      String myHeader = "Your ocean";
+      String enemyHeader = "Player " + enemyName + "'s ocean";
+      out.println(this.view.displayMyBoardWithEnemyNextToIt(enemyBoardView, myHeader, enemyHeader));
+      out.println("Possible actions for Player " + this.name + ":\n" + "F Fire at a square\n"
+          + "M Move a ship to another square (" + this.scanNum + " remaining)\n" + "S Sonar scan (" + this.scanNum
+          + " remaining)\n" + "Player " + this.name + ", what would you like to do?");
+      String s = inputReader.readLine();
+      if(s.length() != 1){
+        out.println("Invalid choice!");
+        continue;
+      }
+      if (s.charAt(0) == 'F') {
+        playOneTurn(enemyBoard, enemyBoardView, enemyName);
+        break;
+      } else {
+        if (s.charAt(0) == 'S') {
+          if(scanNum <= 0){
+            out.println("No remaining scan chance!");
+            continue;
+          }
+          scan(enemyBoard);
+          break;
+        }
+        else{
+          out.println("Invalid choice!");
+          continue;
+        }
+      }
+    }
+
   }
 }
   

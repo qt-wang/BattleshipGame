@@ -89,7 +89,7 @@ public class TextPlayerTest {
   @Test
   public void test_doPlacementTest() throws IOException{
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-    TextPlayer player = createTextPlayer(10, 20, "A0v\nA1v\nA2V\nA3V\nA4V\nA5V\nA6V\nA7V\nA8V\nA9V\n", bytes);
+    TextPlayer player = createTextPlayer(10, 20, "A0v\nA1v\nA2V\nA3V\nA4V\nK5U\nH6R\nM7D\nA8U\nS3R\n", bytes);
     player.doPlacementPhase();
     String expected2 = "  0|1\n"+
                        "A  |  A\n"+
@@ -124,6 +124,18 @@ public class TextPlayerTest {
     assertThrows(EOFException.class, () -> player.readPlacement(""));
   }
 
+  @Test
+  public void test_scan() throws IOException{
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(2, 3, "A5", bytes);
+    Board<Character> b = new BattleShipBoard<Character>(10, 20, 'X');
+    V1ShipFactory v = new V1ShipFactory();
+    Ship<Character> s = v.makeDestroyer(new Placement(new Coordinate(0, 5), 'V'));
+    b.tryAddShip(s);
+    player.scan(b);
+    assertEquals(2, player.getScanNum());
+    //    assertEquals(" ", bytes.toString());
+  }
 }
 
 

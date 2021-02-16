@@ -1,0 +1,5 @@
+package edu.duke.qw99.battleship;
+
+public class carrierShip<T> extends BasicShip<T> {
+
+}

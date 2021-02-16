@@ -1,0 +1,65 @@
+package edu.duke.qw99.battleship;
+
+import java.util.HashSet;
+
+public class battleshipShip<T> extends BasicShip<T> {
+  private String name;
+
+  /**
+   *Make a coordinate set that contains all coordinates a ship occupies.
+   *@param upperLeft is the specified upperleft coordinate of a ship.
+   *@param width is the specified width of a ship.  
+   *@param width is the specified height of a ship. 
+   **/
+  static HashSet<Coordinate> makeCoords(Coordinate upperLeft, boolean partOfShip, int layerNum, int firstLayer, int secondLayer, int thirdLayer) {
+    int row = upperLeft.getRow();
+    int col = upperLeft.getColumn();
+    HashSet<Coordinate> ans = new HashSet<Coordinate>();
+    if(partOfShip == true){
+      ans.add(upperLeft);
+    }
+    for(int i = 0; i < firstLayer; i++){
+      Coordinate c = new Coordinate(row, col + i);
+      ans.add(c);
+    }     
+    for(int j = 0; j < secondLayer; j++){
+      Coordinate
+    }
+    return ans;
+  }
+
+  public battleshipShip(String name, Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> sdpi,
+      ShipDisplayInfo<T> enemyDisplayInfo) {
+    super(makeCoords(upperLeft, width, height), sdpi, enemyDisplayInfo);
+    this.name = name;
+  }
+
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit),
+        new SimpleShipDisplayInfo<T>(null, data));
+  }
+
+  public RectangleShip(Coordinate upperLeft, T data, T onHit) {
+    this("testship", upperLeft, 1, 1, data, onHit);
+  }
+
+  /**
+   *Get the name of the RectangleShip.
+   *@return the name of the RectangleShip name
+   */
+  public String getName() {
+    return name;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

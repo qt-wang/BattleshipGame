@@ -25,6 +25,24 @@ public class V1ShipFactory implements AbstractShipFactory<Character> {
     return ship;
   }
 
+  protected Ship<Character> createBattleship(Placement where, char letter, String name){
+    battleshipShip<Character> ship;
+    if(where.getOrientation() != 'U' && where.getOrientation() != 'R' && where.getOrientation() != 'D' && where.getOrientation() != 'L'){
+       throw new IllegalArgumentException("Invalid orientation");
+    }
+    ship = new battleshipShip<Character>(name, where, letter, '*');
+    return ship;
+  }
+
+    protected Ship<Character> createCarrier(Placement where, char letter, String name){
+    carrierShip<Character> ship;
+    if(where.getOrientation() != 'U' && where.getOrientation() != 'R' && where.getOrientation() != 'D' && where.getOrientation() != 'L'){
+       throw new IllegalArgumentException("Invalid orientation");
+    }
+    ship = new carrierShip<Character>(name, where, letter, '*');
+    return ship;
+  }
+
   /**
    * Make a submarine.
    * 
@@ -44,7 +62,7 @@ public class V1ShipFactory implements AbstractShipFactory<Character> {
    */
 	@Override
 	public Ship<Character> makeBattleship(Placement where) {
-	  return createShip(where, 1, 4, 'b', "Battleship");
+	  return createBattleship(where, 'b', "Battleship");
 	}
 
    /**
@@ -55,7 +73,7 @@ public class V1ShipFactory implements AbstractShipFactory<Character> {
    */
 	@Override
 	public Ship<Character> makeCarrier(Placement where) {
-	  return createShip(where, 1, 6, 'c', "Carrier");
+	  return createCarrier(where,'c', "Carrier");
 	}
 
    /**
