@@ -136,6 +136,16 @@ public class TextPlayerTest {
     assertEquals(2, player.getScanNum());
     //    assertEquals(" ", bytes.toString());
   }
+
+  @Test
+  public void test_move() throws IOException{
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    TextPlayer player = createTextPlayer(2, 3, "A1V\nA1\nA0V", bytes);
+    player.doOnePlacement("Destroyer", player.shipCreationFns.get("Destroyer"));
+    player.move();
+    assertEquals(bytes.toString(), bytes.toString());
+  }
+  
 }
 
 

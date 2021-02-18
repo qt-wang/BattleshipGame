@@ -1,6 +1,7 @@
 package edu.duke.qw99.battleship;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public abstract class BasicShip<T> implements Ship<T>{
@@ -8,7 +9,7 @@ public abstract class BasicShip<T> implements Ship<T>{
   protected HashMap<Coordinate, Boolean> myPieces;
   protected ShipDisplayInfo<T> myDisplayInfo;
   protected ShipDisplayInfo<T> enemyDisplayInfo;
-  
+  protected HashMap<Integer, Coordinate> piecesIndex;
 
   /**
    *Construct a BasicShip.
@@ -16,14 +17,25 @@ public abstract class BasicShip<T> implements Ship<T>{
    *@param myDisplayInfo represents how to mark a miss and a hit of my ships.
    *@param enemyDisplayInfo represents how to mark a miss and a hit of my enemy's ships.
    */
-  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> enemyDisplayInfo){
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> myDisplayInfo, ShipDisplayInfo<T> enemyDisplayInfo, HashMap<Integer, Coordinate> piecesIndex){
     myPieces = new HashMap<Coordinate, Boolean>();
     this.myDisplayInfo = myDisplayInfo;
     this.enemyDisplayInfo = enemyDisplayInfo;
     for(Coordinate c : where){
       myPieces.put(c, false);
     }
+    this.piecesIndex = piecesIndex;
     }
+
+  @Override
+  public HashMap<Coordinate, Boolean>  getMyPieces(){
+    return myPieces;
+  }
+
+  @Override
+  public HashMap<Integer, Coordinate> getPiecesIndex(){
+    return piecesIndex;
+  }
 
   /**
    *Check whether a coordinate is in this ship.
@@ -112,7 +124,23 @@ public abstract class BasicShip<T> implements Ship<T>{
   public Iterable<Coordinate> getCoordinates(){
     return myPieces.keySet();
   }
+
+  /**
+   *This function implements existing damage to the ship remains in the
+   * same relative position(s) of the ship.
+   *@param from is the ship you want to move  
+   */
+  @Override
+  public void moveToDestination(Ship<T> from){
+    for(Integer key : from.getPiecesIndex().keySet()){
+      Coordinate c = from.getPiecesIndex().get(key);
+      if(from.getMyPieces().get(c) == true){
+         this.myPieces.put((this.getPiecesIndex().get(key)), true);
+      }
+      }
+  }
 }
+
 
 
 

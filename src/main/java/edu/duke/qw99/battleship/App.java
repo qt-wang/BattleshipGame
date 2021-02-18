@@ -6,14 +6,19 @@ package edu.duke.qw99.battleship;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class App {
   TextPlayer player1;
   TextPlayer player2;
+  ComputerPlayer computer1;
+  ComputerPlayer computer2;
   
-  public App(TextPlayer p1, TextPlayer p2) {
+  public App(TextPlayer p1, TextPlayer p2, ComputerPlayer comp1, ComputerPlayer comp2) {
     this.player1 = p1;
     this.player2 = p2;
+    this.computer1 = comp1;
+    this.computer2 = comp2;
   }
 
   public void doPlacementPhase() throws IOException{
@@ -27,7 +32,7 @@ public class App {
         player1.playOneTurn(player2.theBoard, player2.view, player2.name);
       }
       else{
-        player2.out.println(player2.name + "wins!");
+        player2.out.println(player2.name + " wins!");
         break;
       }
       if(player2.theBoard.isLose() == false){
@@ -47,7 +52,7 @@ public class App {
         player1.doAll(player2.theBoard, player2.view, player2.name);
       }
       else{
-        player2.out.println(player2.name + "wins!");
+        player2.out.println(player2.name + " wins!");
         break;
       }
       if(player2.theBoard.isLose() == false){
@@ -61,16 +66,84 @@ public class App {
     System.exit(0);
   }
 
+  public void humanVsComp() throws IOException{
+     while(true){
+       if(player1.theBoard.isLose() == false){
+        player1.doAll(computer1.theBoard, computer1.view, computer1.name);
+      }
+      else{
+        computer1.out.println(computer1.name + " wins!");
+        break;
+      }
+      if(computer1.theBoard.isLose() == false){
+        computer1.doAll(player1.theBoard);
+      }
+      else{
+        player1.out.println(player1.name + " wins!");
+        break;
+      }
+    }
+    System.exit(0);
+  }
+
+  public void compVsComp() throws IOException{
+     while(true){
+       if(computer1.theBoard.isLose() == false){
+        computer1.doAll(computer2.theBoard);
+      }
+      else{
+        computer2.out.println(computer2.name + " wins!");
+        break;
+      }
+      if(computer2.theBoard.isLose() == false){
+        computer2.doAll(computer1.theBoard);
+      }
+      else{
+        computer1.out.println(computer1.name + " wins!");
+        break;
+      }
+    }
+    System.exit(0);
+  }
+  
+
   public static void main(String[] args) throws IOException{
     Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     V1ShipFactory factory = new V1ShipFactory();
-    TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);
-    TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
-    App app = new App(player1, player2);
-    app.doPlacementPhase();
-    app.doAllPhase();
+    System.out.println("Please choose a mode(enter the choice number)\n" +
+                       "1: human VS human\n" +
+                       "2: human VS computer\n" +
+                       "3: computer VS computer");
+    Scanner sc=new Scanner(System.in);
+    System.out.println("please enter the choice number:\n");
+    String str = sc.nextLine();
+    if(str.charAt(0) == '1' && str.length() == 1){
+       TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);
+       TextPlayer player2 = new TextPlayer("B", b2, input, System.out, factory);
+       App app = new App(player1, player2, null, null);
+       app.doPlacementPhase();
+       app.doAllPhase();
+    }
+    if(str.charAt(0) == '2' && str.length() == 1){
+      TextPlayer player1 = new TextPlayer("A", b1, input, System.out, factory);
+      ComputerPlayer comp1 = new ComputerPlayer("Computer", b2, System.out, factory);
+      App app = new App(player1, null, comp1, null);
+      app.computer1.doPlacement();
+      app.player1.doPlacementPhase();
+      app.humanVsComp();
+    }
+    if(str.charAt(0) == '3' && str.length() == 1){
+      ComputerPlayer comp1 = new ComputerPlayer("Computer1", b1, System.out, factory);
+      ComputerPlayer comp2 = new ComputerPlayer("Computer2", b2, System.out, factory);
+      App app = new App(null, null, comp1, comp2);
+      app.computer1.doPlacement();
+      app.computer2.doPlacement();
+      app.compVsComp();
+    }
+    
+ 
   }
 
   

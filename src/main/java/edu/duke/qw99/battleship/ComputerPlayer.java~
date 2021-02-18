@@ -1,0 +1,232 @@
+package edu.duke.qw99.battleship;
+
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.function.Function;
+
+public class ComputerPlayer {
+  final Board<Character> theBoard;
+  final BoardTextView view;
+  final PrintStream out;
+  final AbstractShipFactory<Character> shipFactory;
+  String name;
+  final ArrayList<String> shipsToPlace;
+  final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
+  private int moveNum;
+  private int scanNum;
+
+  protected void setupShipCreationMap() {
+    shipCreationFns.put("Submarine", (p) -> shipFactory.makeSubmarine(p));
+    shipCreationFns.put("Destroyer", (p) -> shipFactory.makeDestroyer(p));
+    shipCreationFns.put("Carrier", (p) -> shipFactory.makeCarrier(p));
+    shipCreationFns.put("Battleship", (p) -> shipFactory.makeBattleship(p));
+  }
+
+  protected void setupShipCreationList() {
+    shipsToPlace.addAll(Collections.nCopies(2, "Submarine"));
+    shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
+    shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
+    shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
+  }
+
+  public ComputerPlayer(String name, Board<Character> theBoard, PrintStream out,
+      AbstractShipFactory<Character> shipFctory) {
+    this.name = name;
+    this.theBoard = theBoard;
+    this.out = out;
+    this.shipFactory = shipFctory;
+    this.shipsToPlace = new ArrayList<String>();
+    this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
+    setupShipCreationList();
+    setupShipCreationMap();
+    this.moveNum = 3;
+    this.view = new BoardTextView(theBoard);
+  }
+
+  public Coordinate randomCoordinate() {
+    Random random = new Random();
+    StringBuilder sb = new StringBuilder();
+    sb.append((char) (random.nextInt(20) + 'A'));
+    sb.append(Integer.toString(random.nextInt(10)));
+    return new Coordinate(sb.toString());
+  }
+
+  public Placement randomPlacement() {
+    String str = "VHUDLR";
+    Random random = new Random();
+    StringBuilder sb = new StringBuilder();
+    sb.append((char) (random.nextInt(20) + 'A'));
+    sb.append(Integer.toString(random.nextInt(10)));
+    sb.append(str.charAt(random.nextInt(6)));
+    return new Placement(sb.toString());
+  }
+
+  public void doOnePlacement(String shipName, Function<Placement, Ship<Character>> createFn) {
+    Ship<Character> ship = null;
+    String str;
+    while (true) {
+      Placement p = randomPlacement();
+      if (shipName == "Submarine") {
+        if (p.getOrientation() != 'H' && p.getOrientation() != 'V') {
+          continue;
+        }
+        ship = createFn.apply(p);
+        str = theBoard.tryAddShip(ship);
+        if (str != null) {
+          continue;
+        } else {
+          break;
+        }
+      } else if (shipName == "Destroyer") {
+        if (p.getOrientation() != 'H' && p.getOrientation() != 'V') {
+          continue;
+        }
+        ship = createFn.apply(p);
+        str = theBoard.tryAddShip(ship);
+        if (str != null) {
+          continue;
+        } else {
+          break;
+        }
+      } else if (shipName == "Battleship") {
+        if (p.getOrientation() != 'U' && p.getOrientation() != 'D' && p.getOrientation() != 'R'
+            && p.getOrientation() != 'L') {
+          continue;
+        }
+        ship = createFn.apply(p);
+        str = theBoard.tryAddShip(ship);
+        if (str != null) {
+          continue;
+        } else {
+          break;
+        }
+      } else if (shipName == "Carrier") {
+        if (p.getOrientation() != 'U' && p.getOrientation() != 'D' && p.getOrientation() != 'R'
+            && p.getOrientation() != 'L') {
+          continue;
+        }
+        ship = createFn.apply(p);
+        str = theBoard.tryAddShip(ship);
+        if (str != null) {
+          continue;
+        } else {
+          break;
+        }
+
+      }
+    }
+  }
+
+  public void doPlacement() {
+    for (String s : shipsToPlace) {
+      doOnePlacement(s, shipCreationFns.get(s));
+    }
+  }
+
+  public void fire(Board<Character> enemyBoard) {
+    Coordinate c = randomCoordinate();
+    Ship<Character> ship = enemyBoard.fireAt(c);
+    if (ship == null) {
+      out.println("Computer missed!\n");
+    } else {
+      out.println("Computer hit a " + ship.getName() + "!\n");
+    }
+  }
+
+  public void move() {
+    Coordinate c;
+    while (true) {
+      c = randomCoordinate();
+      if (theBoard.searchShip(c) == null) {
+        continue;
+      } else {
+        break;
+      }
+    }
+    Ship<Character> ship = theBoard.searchShip(c);
+    Ship<Character> newShip = ship;
+    while (true) {
+      Placement p = randomPlacement();
+      if (ship.getName() == "Submarine") {
+        if (p.getOrientation() != 'H' && p.getOrientation() != 'V') {
+          continue;
+        }
+        newShip = shipFactory.makeSubmarine(p);
+        break;
+      } else if (ship.getName() == "Destroyer") {
+        if (p.getOrientation() != 'H' && p.getOrientation() != 'V') {
+          continue;
+        }
+        newShip = shipFactory.makeDestroyer(p);
+        break;
+      } else if (ship.getName() == "Battleship") {
+        if (p.getOrientation() != 'U' && p.getOrientation() != 'D' && p.getOrientation() != 'R'
+            && p.getOrientation() != 'L') {
+          continue;
+        }
+        newShip = shipFactory.makeBattleship(p);
+        break;
+      } else if (ship.getName() == "Carrier") {
+        if (p.getOrientation() != 'U' && p.getOrientation() != 'D' && p.getOrientation() != 'R'
+            && p.getOrientation() != 'L') {
+          continue;
+        }
+        newShip = shipFactory.makeCarrier(p);
+        break;
+      }
+    }
+    theBoard.moveShip(ship, newShip, c);
+    moveNum--;
+  }
+
+  /*
+   * public void scan(Board<Character> enemyBoard){ int submarineNum = 0; int
+   * destroyerNum = 0; int battleshipNum = 0; int carrierNum = 0; String s; while
+   * (true) { Coordinate c = randomCoordinate(); int row = c.getRow(); int col =
+   * c.getColumn(); for (int i = -3; i <= 0; i++) { for (int j = -3 - i; j <= 3 +
+   * i; j++) { if ((row + i) < 0 || (row + i) >= enemyBoard.getHeight() || (col +
+   * j) < 0 || (col + j) >= enemyBoard.getWidth()) { continue; } else {
+   * if(enemyBoard.whatIsAtForSelf(new Coordinate(row + i, col + j)) == null){
+   * continue; } char shipName = enemyBoard.whatIsAtForSelf(new Coordinate(row +
+   * i, col + j)); if (shipName == 's') { submarineNum++; } if (shipName == 'd') {
+   * destroyerNum++; } if (shipName == 'b') { battleshipNum++; } if (shipName ==
+   * 'c') { carrierNum++; } } } } for (int m = 1; m <= 3; m++) { for (int n = m -
+   * 3; n <= 3 - m; n++) { if ((row + m) < 0 || (row + m) >=
+   * enemyBoard.getHeight() || (col + n) < 0 || (col + n) >=
+   * enemyBoard.getWidth()) { break; } else { if(enemyBoard.whatIsAtForSelf(new
+   * Coordinate(row + m, col + n)) == null){ continue; } char shipName =
+   * enemyBoard.whatIsAtForSelf(new Coordinate(row + m, col + n)); if (shipName ==
+   * 's') { submarineNum++; } if (shipName == 'd') { destroyerNum++; } if
+   * (shipName == 'b') { battleshipNum++; } if (shipName == 'c') { carrierNum++; }
+   * } } } scanNum--; } }
+   */
+
+  public void doAll(Board<Character> enemyBoard) {
+    // doPlacement();
+    while (true) {
+      Random ran = new Random();
+      int choice = ran.nextInt(2);
+      if (choice == 0) {
+        fire(enemyBoard);
+        break;
+      } else {
+        if (choice == 1) {
+          if (moveNum > 0) {
+            move();
+            out.println("Computer uses a special action.");
+            break;
+          } else {
+            continue;
+          }
+        }
+        /*
+         * if(choice == 2){ if(scanNum > 0){ scan(enemyBoard);
+         * out.println("Computer uses a special action."); break; } else{ continue; } }
+         */
+      }
+    }
+  }
+}

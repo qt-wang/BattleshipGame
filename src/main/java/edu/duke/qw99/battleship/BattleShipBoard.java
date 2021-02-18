@@ -144,8 +144,38 @@ public class BattleShipBoard<T> implements Board<T> {
     }
     return true;
   }
-
-
+  
+  /**
+   *This function realizes I move one ship to another place.
+   *@param from is the ship you want to move.
+   *@param to is a new ship I create on the placement that I want to move from ship to  
+   */  
+  public boolean moveShip(Ship<T> from, Ship<T> to, Coordinate des){
+    //tryAddShip(to);
+    if (tryAddShip(to) == null) {
+      myShips.remove(from);
+      to.moveToDestination(from);
+      return true;
+    }
+    else{
+      return false;
+    }
+   
+  }
+  
+  /**
+   *This function searches a ship according to the given coordinate.
+   *@param c is the coordinate you want to search
+   *@return the ship on this coordiante.  
+   */
+  public Ship<T> searchShip(Coordinate c){
+    for(Ship<T> s : myShips){
+      if(s.occupiesCoordinates(c) == true){
+        return s;
+      }
+    }
+    return null;
+  }
 }
 
 

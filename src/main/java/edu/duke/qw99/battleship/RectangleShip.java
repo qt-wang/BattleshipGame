@@ -1,5 +1,6 @@
 package edu.duke.qw99.battleship;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class RectangleShip<T> extends BasicShip<T> {
@@ -22,9 +23,23 @@ public class RectangleShip<T> extends BasicShip<T> {
     return ans;
   }
 
+  static HashMap<Integer, Coordinate> mapPiecesWithIndex(Coordinate upperLeft, int width, int height){
+    HashMap<Integer, Coordinate> ans = new HashMap<Integer, Coordinate>();
+    int row = upperLeft.getRow();
+    int col = upperLeft.getColumn();
+    int count = 0;
+    for(int i = 0; i < height; i++){
+      for(int j = 0; j < width; j++){
+        count++;
+        ans.put(count, new Coordinate(row + i, col + j));
+      }
+    }
+    return ans;
+  }
+
   public RectangleShip(String name, Coordinate upperLeft, int width, int height, ShipDisplayInfo<T> sdpi,
       ShipDisplayInfo<T> enemyDisplayInfo) {
-    super(makeCoords(upperLeft, width, height), sdpi, enemyDisplayInfo);
+    super(makeCoords(upperLeft, width, height), sdpi, enemyDisplayInfo, mapPiecesWithIndex(upperLeft, width, height));
     this.name = name;
   }
 

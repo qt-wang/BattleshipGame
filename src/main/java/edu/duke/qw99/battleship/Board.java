@@ -15,6 +15,9 @@ public interface Board<T> {
 
   public boolean isLose();
 
+  public boolean moveShip(Ship<T> from, Ship<T> to, Coordinate des);
+    
+  public Ship<T> searchShip(Coordinate c);
 }
 
 
